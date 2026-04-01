@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+---
+<Base
+  title="About Hume City Cleaners — Local Cleaning Experts in Melbourne's North"
+  description="Locally owned and operated cleaning company serving Hume City. Learn about our team, values, and commitment to delivering spotless results."
+>
+  <section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-14 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl sm:text-5xl font-extrabold mb-4">About Hume City Cleaners</h1>
+      <p class="text-lg text-gray-200">Your trusted local cleaning professionals since day one.</p>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-primary mb-4">Who We Are</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Hume City Cleaners is a locally owned and operated cleaning company based in Melbourne's northern suburbs. We specialise in residential, commercial, and specialist cleaning services for homes and businesses across the Hume City area.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          We started with a simple goal: to provide reliable, high-quality cleaning at fair prices. No shortcuts, no hidden charges — just honest work and spotless results. Our team lives in the communities we serve, from Craigieburn to Broadmeadows to Sunbury, so we treat every property like it's our own.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-primary mb-4">Our Values</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {[
+            { title: 'Reliability', desc: 'We turn up on time, every time. If we say we\'ll be there, we will.' },
+            { title: 'Quality', desc: 'We don\'t cut corners. Every surface, every room gets our full attention.' },
+            { title: 'Transparency', desc: 'Clear pricing upfront. No surprise fees or hidden extras after the job.' },
+            { title: 'Community', desc: 'We\'re proud to support local families and businesses in Hume City.' },
+          ].map(v => (
+            <div class="bg-surface rounded-xl p-5 border border-gray-200">
+              <h3 class="font-bold text-primary mb-2">{v.title}</h3>
+              <p class="text-gray-600 text-sm">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-primary mb-4">Why Clients Choose Us</h2>
+        <ul class="space-y-3">
+          {[
+            'Fully insured with public liability coverage',
+            'Experienced, vetted, and trained cleaning staff',
+            'Eco-friendly products available on request',
+            'Flexible scheduling — weekdays, evenings, and weekends',
+            'Bond-back guarantee on all end of lease cleans',
+            'Free, no-obligation quotes within the hour',
+          ].map(item => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-gray-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</Base>

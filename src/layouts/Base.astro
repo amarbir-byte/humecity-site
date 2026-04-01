@@ -1,0 +1,144 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteUrl = 'https://humecitycleaners.com.au';
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl + Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_AU" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <slot name="head" />
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased">
+  <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <a href="/" class="text-xl sm:text-2xl font-bold tracking-tight">
+          Hume City<span class="text-accent"> Cleaners</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="/" class="hover:text-accent transition-colors">Home</a>
+          <div class="relative group">
+            <button class="hover:text-accent transition-colors flex items-center gap-1">
+              Services
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-56 bg-white text-gray-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+              <a href="/services/residential" class="block px-4 py-2 hover:bg-surface text-sm">Residential Cleaning</a>
+              <a href="/services/commercial" class="block px-4 py-2 hover:bg-surface text-sm">Commercial Cleaning</a>
+              <a href="/services/end-of-lease" class="block px-4 py-2 hover:bg-surface text-sm">End of Lease Cleaning</a>
+              <a href="/services/carpet" class="block px-4 py-2 hover:bg-surface text-sm">Carpet Cleaning</a>
+              <a href="/services/window" class="block px-4 py-2 hover:bg-surface text-sm">Window Cleaning</a>
+              <a href="/services/pressure" class="block px-4 py-2 hover:bg-surface text-sm">Pressure Washing</a>
+              <a href="/services/post-renovation" class="block px-4 py-2 hover:bg-surface text-sm">Post-Renovation Cleaning</a>
+            </div>
+          </div>
+          <a href="/about" class="hover:text-accent transition-colors">About</a>
+          <a href="/faq" class="hover:text-accent transition-colors">FAQ</a>
+          <a href="/contact" class="hover:text-accent transition-colors">Contact</a>
+          <a href="tel:0406920717" class="bg-accent hover:bg-accent-light text-primary-dark font-semibold px-4 py-2 rounded-lg transition-colors">
+            0406 920 717
+          </a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-primary-dark border-t border-primary-light">
+      <nav class="px-4 py-4 space-y-3 text-sm">
+        <a href="/" class="block hover:text-accent">Home</a>
+        <a href="/services/residential" class="block hover:text-accent">Residential Cleaning</a>
+        <a href="/services/commercial" class="block hover:text-accent">Commercial Cleaning</a>
+        <a href="/services/end-of-lease" class="block hover:text-accent">End of Lease Cleaning</a>
+        <a href="/services/carpet" class="block hover:text-accent">Carpet Cleaning</a>
+        <a href="/services/window" class="block hover:text-accent">Window Cleaning</a>
+        <a href="/services/pressure" class="block hover:text-accent">Pressure Washing</a>
+        <a href="/services/post-renovation" class="block hover:text-accent">Post-Renovation Cleaning</a>
+        <a href="/about" class="block hover:text-accent">About</a>
+        <a href="/faq" class="block hover:text-accent">FAQ</a>
+        <a href="/contact" class="block hover:text-accent">Contact</a>
+        <a href="tel:0406920717" class="block bg-accent text-primary-dark font-semibold px-4 py-2 rounded-lg text-center mt-4">
+          Call 0406 920 717
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="bg-primary-dark text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">Hume City Cleaners</h3>
+          <p class="text-sm leading-relaxed">Professional cleaning services across Melbourne's northern suburbs. Trusted by hundreds of homes and businesses in Craigieburn, Broadmeadows, Sunbury, and surrounding areas.</p>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">Our Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/services/residential" class="hover:text-accent transition-colors">Residential Cleaning</a></li>
+            <li><a href="/services/commercial" class="hover:text-accent transition-colors">Commercial Cleaning</a></li>
+            <li><a href="/services/end-of-lease" class="hover:text-accent transition-colors">End of Lease Cleaning</a></li>
+            <li><a href="/services/carpet" class="hover:text-accent transition-colors">Carpet Cleaning</a></li>
+            <li><a href="/services/window" class="hover:text-accent transition-colors">Window Cleaning</a></li>
+            <li><a href="/services/pressure" class="hover:text-accent transition-colors">Pressure Washing</a></li>
+            <li><a href="/services/post-renovation" class="hover:text-accent transition-colors">Post-Renovation Cleaning</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">Contact Us</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:0406920717" class="hover:text-accent transition-colors">0406 920 717</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>Hume City, Melbourne VIC</span>
+            </li>
+          </ul>
+          <div class="mt-6">
+            <a href="/contact" class="inline-block bg-accent hover:bg-accent-light text-primary-dark font-semibold px-6 py-2.5 rounded-lg transition-colors text-sm">
+              Get a Free Quote
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-600 mt-10 pt-6 text-center text-xs text-gray-400">
+        <p>&copy; {new Date().getFullYear()} Hume City Cleaners. All rights reserved. ABN provided on request.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  </script>
+</body>
+</html>

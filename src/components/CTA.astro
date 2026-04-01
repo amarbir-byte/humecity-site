@@ -1,0 +1,21 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const { title = 'Ready for a Spotless Space?', subtitle = 'Get a free, no-obligation quote today. We serve Craigieburn, Broadmeadows, Sunbury, and all of Hume City.' } = Astro.props;
+---
+<section class="bg-primary text-white py-14">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4">{title}</h2>
+    <p class="text-gray-200 mb-8 text-lg">{subtitle}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/contact" class="bg-accent hover:bg-accent-light text-primary-dark font-bold px-8 py-3.5 rounded-lg text-lg transition-colors">
+        Get a Free Quote
+      </a>
+      <a href="tel:0406920717" class="border-2 border-white hover:bg-white hover:text-primary font-bold px-8 py-3.5 rounded-lg text-lg transition-colors">
+        Call 0406 920 717
+      </a>
+    </div>
+  </div>
+</section>

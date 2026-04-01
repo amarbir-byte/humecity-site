@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+---
+<Base
+  title="Hume City Cleaners — Professional Cleaning Services in Melbourne's North"
+  description="Trusted cleaning services in Craigieburn, Broadmeadows, Sunbury & Hume City. Residential, commercial, end of lease, carpet & window cleaning. Free quotes. Call 0406 920 717."
+>
+  <Hero
+    title="Professional Cleaning Services in <span class='text-accent'>Hume City</span>"
+    subtitle="Trusted by hundreds of homes and businesses across Craigieburn, Broadmeadows, Sunbury, and Melbourne's northern suburbs. Reliable, thorough, and affordable."
+  />
+
+  <section class="py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center text-primary mb-4">Our Cleaning Services</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">From weekly home cleans to full commercial fit-outs, we deliver spotless results every time.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <ServiceCard title="Residential Cleaning" description="Regular house cleaning tailored to your schedule. Kitchens, bathrooms, living areas, and more." href="/services/residential" icon="🏠" />
+        <ServiceCard title="Commercial Cleaning" description="Offices, retail, and warehouses kept clean and hygienic for staff and customers." href="/services/commercial" icon="🏢" />
+        <ServiceCard title="End of Lease" description="Bond-back guarantee cleaning for tenants and property managers across Hume City." href="/services/end-of-lease" icon="🔑" />
+        <ServiceCard title="Carpet Cleaning" description="Deep steam cleaning to remove stains, allergens, and odours from carpets and rugs." href="/services/carpet" icon="🧹" />
+        <ServiceCard title="Window Cleaning" description="Crystal-clear windows inside and out for homes and commercial properties." href="/services/window" icon="🪟" />
+        <ServiceCard title="Pressure Washing" description="Driveways, patios, decks, and building exteriors restored to like-new condition." href="/services/pressure" icon="💦" />
+        <ServiceCard title="Post-Renovation" description="Builders' clean to remove dust, debris, and construction residue from your property." href="/services/post-renovation" icon="🔨" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center text-primary mb-10">Why Choose Hume City Cleaners?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { icon: '✓', title: 'Locally Owned', desc: 'We live and work in Hume City. We know these suburbs and we care about our community.' },
+          { icon: '⏰', title: 'Reliable & On Time', desc: 'We show up when we say we will. No excuses, no missed appointments.' },
+          { icon: '🛡️', title: 'Fully Insured', desc: 'Complete public liability insurance for your peace of mind on every job.' },
+          { icon: '💰', title: 'Fair Pricing', desc: 'Transparent, competitive rates with no hidden fees. Free quotes on all services.' },
+        ].map(item => (
+          <div class="text-center p-6">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-primary mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <section class="py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center text-primary mb-4">Serving All of Hume City</h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">
+        We provide professional cleaning services throughout Melbourne's northern suburbs including
+        Craigieburn, Broadmeadows, Sunbury, Roxburgh Park, Gladstone Park, Meadow Heights,
+        Tullamarine, Campbellfield, Coolaroo, Dallas, Jacana, Greenvale, Mickleham, and Kalkallo.
+      </p>
+    </div>
+  </section>
+
+  <CTA />
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Hume City Cleaners",
+      "description": "Professional cleaning services in Hume City, Melbourne. Residential, commercial, end of lease, carpet, window, and pressure cleaning.",
+      "telephone": "+61406920717",
+      "url": "https://humecitycleaners.com.au",
+      "areaServed": {
+        "@type": "City",
+        "name": "Hume City",
+        "containedInPlace": { "@type": "State", "name": "Victoria" }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hume City",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:00",
+        "closes": "18:00"
+      }
+    })} />
+  </Fragment>
+</Base>

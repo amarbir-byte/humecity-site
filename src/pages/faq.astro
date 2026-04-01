@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+
+const faqs = [
+  { q: 'What areas do you service?', a: 'We cover all suburbs in the Hume City area including Craigieburn, Broadmeadows, Sunbury, Roxburgh Park, Gladstone Park, Meadow Heights, Tullamarine, Campbellfield, Coolaroo, Dallas, Jacana, Greenvale, Mickleham, and Kalkallo.' },
+  { q: 'How do I get a quote?', a: 'Call us on 0406 920 717 or fill in our online contact form. We\'ll provide a free, no-obligation quote within the hour during business hours.' },
+  { q: 'Are you insured?', a: 'Yes, we carry full public liability insurance on all jobs. You can request a copy of our certificate of currency at any time.' },
+  { q: 'Do you provide your own cleaning products and equipment?', a: 'Yes, we bring everything needed for the job. We use professional-grade products and equipment. Eco-friendly products are available on request at no extra charge.' },
+  { q: 'Can I book a same-day clean?', a: 'Subject to availability, we can often accommodate same-day bookings. Give us a call and we\'ll do our best to fit you in.' },
+  { q: 'What is your end of lease bond-back guarantee?', a: 'If your real estate agent or landlord raises cleaning issues within 72 hours of our end of lease clean, we\'ll come back and fix them at no extra cost.' },
+  { q: 'How far in advance should I book?', a: 'We recommend booking 2–3 days ahead for regular cleans and 5–7 days for end of lease cleans. However, we always try to accommodate shorter notice.' },
+  { q: 'Do I need to be home during the clean?', a: 'Not necessarily. Many clients provide a key or access code. We\'re fully insured and happy to clean while you\'re out.' },
+  { q: 'What payment methods do you accept?', a: 'We accept bank transfer, cash, and all major credit/debit cards. Payment is due on completion of the clean.' },
+  { q: 'Can I get regular weekly or fortnightly cleans?', a: 'Absolutely. We offer recurring cleaning schedules — weekly, fortnightly, or monthly — at discounted rates compared to one-off cleans.' },
+];
+---
+<Base
+  title="FAQ — Hume City Cleaners | Common Cleaning Questions Answered"
+  description="Frequently asked questions about Hume City Cleaners. Learn about our services, pricing, bond-back guarantee, and booking process."
+>
+  <section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-14 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl sm:text-5xl font-extrabold mb-4">Frequently Asked Questions</h1>
+      <p class="text-lg text-gray-200">Everything you need to know about our cleaning services.</p>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="space-y-4">
+        {faqs.map(({ q, a }) => (
+          <details class="group bg-white rounded-lg border border-gray-200 shadow-sm">
+            <summary class="px-6 py-5 cursor-pointer font-semibold text-primary flex items-center justify-between">
+              {q}
+              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-gray-600 leading-relaxed">{a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a }
+      }))
+    })} />
+  </Fragment>
+</Base>

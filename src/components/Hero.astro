@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  cta?: string;
+  ctaLink?: string;
+  secondaryCta?: string;
+  secondaryCtaLink?: string;
+}
+
+const { title, subtitle, cta = 'Get a Free Quote', ctaLink = '/contact', secondaryCta = 'Call 0406 920 717', secondaryCtaLink = 'tel:0406920717' } = Astro.props;
+---
+<section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-16 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" set:html={title} />
+    <p class="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-10">{subtitle}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={ctaLink} class="bg-accent hover:bg-accent-light text-primary-dark font-bold px-8 py-3.5 rounded-lg text-lg transition-colors shadow-lg">
+        {cta}
+      </a>
+      <a href={secondaryCtaLink} class="border-2 border-white hover:bg-white hover:text-primary font-bold px-8 py-3.5 rounded-lg text-lg transition-colors">
+        {secondaryCta}
+      </a>
+    </div>
+  </div>
+</section>
